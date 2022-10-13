@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { bindActionCreators, createStore } from "redux";
 
 const storeExample = () => {
   const initialState = {
@@ -25,12 +25,19 @@ const storeExample = () => {
 
   const store = createStore(reducer);
 
-  const logState = () => console.log("logState", store.getState());
-  store.subscribe(logState);
+  const actions = bindActionCreators(
+    {
+      increment,
+      add,
+    },
+    store.dispatch
+  );
 
-  store.dispatch(increment());
-  store.dispatch(increment());
-  store.dispatch(add(100));
+  actions.increment();
+  actions.increment();
+  actions.add(100);
+
+  console.log(store.getState());
 };
 
 export default storeExample;
