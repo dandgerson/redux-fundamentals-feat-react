@@ -1,7 +1,4 @@
 import "./main.scss";
+import combineReducersExample from "./combine-reducers-example";
 
-// import composeExample from "./compose-example";
-import storeExample from "./store-example";
-
-// composeExample();
-storeExample();
+combineReducersExample();
