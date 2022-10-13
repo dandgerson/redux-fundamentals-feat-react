@@ -25,11 +25,12 @@ const storeExample = () => {
 
   const store = createStore(reducer);
 
-  console.log("storeExample", { store });
+  const logState = () => console.log("logState", store.getState());
+  store.subscribe(logState);
 
   store.dispatch(increment());
-
-  console.log(store.getState());
+  store.dispatch(increment());
+  store.dispatch(add(100));
 };
 
 export default storeExample;
