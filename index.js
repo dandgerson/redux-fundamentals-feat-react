@@ -1,4 +1,4 @@
-import "./main.scss";
-import combineReducersExample from "./combine-reducers-example";
+import "./src/main.scss";
+import enhancer from "./src/enhancer";
 
-combineReducersExample();
+enhancer();
