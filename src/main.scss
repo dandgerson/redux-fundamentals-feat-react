@@ -1,4 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: rgb(28 28 28);
-  color: rgb(146 212 246);
+  color: rgb(197 197 197);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter {
+  height: 600px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid rgb(172 115 166);
+
+  .count {
+    font-size: 2.5rem;
+  }
+
+  .controlls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    button {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+  }
 }

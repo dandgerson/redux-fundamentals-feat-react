@@ -1,4 +1,14 @@
 import "./src/main.scss";
-import enhancer from "./src/enhancer";
+import { createRoot } from "react-dom/client";
+import React from "react";
+import App from "/src/App";
+import { Provider } from "react-redux";
+import { store } from "./src/store";
 
-enhancer();
+createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
+);
