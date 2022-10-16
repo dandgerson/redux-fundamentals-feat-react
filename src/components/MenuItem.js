@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CurrencyInput from "./CurrencyInput";
 
 const formatPrice = (price) => `$${price.toFixed(2)}`;
 
@@ -10,18 +11,12 @@ const MenuItem = ({ item }) => {
       <h2>{item.name}</h2>
       <div className="formContainer">
         <form>
-          <label htmlFor={`price${item.uuid}`}>
-            Price
-            <div className="currencyinput">
-              <span>$</span>
-              <input
-                type="number"
-                id={`price${item.uuid}`}
-                readOnly
-                value={item.price}
-              />
-            </div>
-          </label>
+          <CurrencyInput
+            htmlFor={`price${item.uuid}`}
+            id={`price${item.uuid}`}
+            value={item.price}
+            isReadOnly
+          />
           <label htmlFor={`quantity${item.uuid}`}>
             Quantity
             <input
@@ -37,7 +32,7 @@ const MenuItem = ({ item }) => {
           <div>{formatPrice(item.price * quantity)}</div>
         </div>
       </div>
-      <button className="button remove">Remove</button>
+      <button className="button button-remove">Remove</button>
     </div>
   );
 };

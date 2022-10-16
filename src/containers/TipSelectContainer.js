@@ -11,7 +11,7 @@ const mapDispatchToProps = {
   updateTip,
 };
 
-export const TipSelectContainer = connect(
+export default TipSelectContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(TipSelect);
