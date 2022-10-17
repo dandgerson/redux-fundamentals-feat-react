@@ -33,7 +33,7 @@ const NewItemForm = ({ onSubmit }) => {
           htmlFor={"price"}
           id={"price"}
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(Number.parseInt(e.target.value, 10))}
         />
 
         <button className="button button-add" disabled={!itemName}>

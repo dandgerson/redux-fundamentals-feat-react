@@ -1,3 +1,5 @@
+import produce from "immer";
+
 const t = {
   ADD_ITEM: "ADD_ITEM",
   REMOVE_ITEM: "REMOVE_ITEM",
@@ -12,16 +14,13 @@ export const initialItems = [
   { uuid: id++, name: "LOL", price: 10, quantity: 1 },
 ];
 
-export const itemsReducer = (state = initialItems, action) => {
+export const itemsReducer = produce((state = initialItems, action) => {
   if (action.type === t.ADD_ITEM) {
-    return [
-      ...state,
-      {
-        uuid: id++,
-        quantity: 1,
-        ...action.payload,
-      },
-    ];
+    state.push({
+      uuid: id++,
+      quantity: 1,
+      ...action.payload,
+    });
   }
 
   if (action.type === t.REMOVE_ITEM) {
@@ -29,25 +28,15 @@ export const itemsReducer = (state = initialItems, action) => {
   }
 
   if (action.type === t.UPDATE_PRICE) {
-    return state.map((item) => ({
-      ...item,
-      price:
-        action.payload.uuid === item.uuid ? action.payload.price : item.price,
-    }));
+    const item = state.find((item) => item.uuid === action.payload.uuid);
+    item.price = action.payload.price;
   }
 
   if (action.type === t.UPDATE_QUANTITY) {
-    return state.map((item) => ({
-      ...item,
-      quantity:
-        action.payload.uuid === item.uuid
-          ? action.payload.quantity
-          : item.quantity,
-    }));
+    const item = state.find((item) => item.uuid === action.payload.uuid);
+    item.quantity = action.payload.quantity;
   }
-
-  return state;
-};
+}, initialItems);
 
 export const addItem = ({ name, price }) => ({
   type: t.ADD_ITEM,
