@@ -1,19 +1,8 @@
 import { useState } from "react";
-
-const initialHumans = [
-  {
-    name: "Lol",
-  },
-  {
-    name: "Wtf",
-  },
-  {
-    name: "Omg",
-  },
-];
+import { useSelector } from "react-redux";
 
 const Humans = () => {
-  const [humans, setHumans] = useState(initialHumans);
+  const humans = useSelector((state) => state.humans);
   const [name, setName] = useState("");
 
   const addHuman = (name) => {

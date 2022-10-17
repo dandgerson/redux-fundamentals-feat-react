@@ -1,18 +1,8 @@
 import { useState } from "react";
-
-const tasks = [
-  {
-    title: "make LOL",
-  },
-  {
-    title: "make WTF",
-  },
-  {
-    title: "make OMG",
-  },
-];
+import { useSelector } from "react-redux";
 
 const Tasks = () => {
+  const tasksFromStore = useSelector((state) => state.tasks);
   const [task, setTask] = useState("");
 
   return (
@@ -30,7 +20,7 @@ const Tasks = () => {
       </form>
 
       <div className="tasksList">
-        {tasks.map((task) => (
+        {tasksFromStore.map((task) => (
           <div key={task.title} className="task">
             <div className="human_title">{task.title}</div>
           </div>
