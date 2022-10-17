@@ -2,7 +2,7 @@ import { useState } from "react";
 import { addItem } from "../store/itemsReducer";
 import CurrencyInput from "./CurrencyInput";
 
-const NewItemForm = ({ dispatch, onSubmit }) => {
+const NewItemForm = ({ onSubmit }) => {
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState(0);
 

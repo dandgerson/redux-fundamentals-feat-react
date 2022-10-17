@@ -1,11 +1,10 @@
-import { useState } from "react";
-import MenuItem from "./MenuItem";
+import MenuItemContainer from "../containers/MenuItemContainer";
 
 const MenuItems = ({ items }) => {
   return (
     <div className="menuItems">
       {items.map((item) => (
-        <MenuItem key={item.uuid} item={item} />
+        <MenuItemContainer key={item.uuid} item={item} />
       ))}
     </div>
   );
