@@ -4,6 +4,17 @@ import CurrencyInput from "./CurrencyInput";
 const formatPrice = (price) => `$${price.toFixed(2)}`;
 
 const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
+  const [quantity, setQuantity] = useState(item.quantity)
+  const [price, setPrice] = useState(item.price)
+
+  useEffect(() => {
+    updateQuantity(Number.parseInt(quantity, 10));
+  }, [quantity])
+
+  useEffect(() => {
+    updatePrice(Number.parseInt(price, 10));
+  }, [price])
+
   return (
     <div className="item">
       <h2>{item.name}</h2>
@@ -13,17 +24,17 @@ const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
           <CurrencyInput
             htmlFor={`price${item.uuid}`}
             id={`price${item.uuid}`}
-            value={item.price}
-            onChange={(e) => updatePrice(e.target.value)}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
           <label htmlFor={`quantity${item.uuid}`}>
             Quantity
             <input
               type="number"
               id={`quantity${item.uuid}`}
-              value={item.quantity}
+              value={quantity}
               onChange={(e) =>
-                updateQuantity(Number.parceInt(e.target.value, 10))
+                setQuantity(e.target.value)
               }
             />
           </label>
@@ -31,7 +42,7 @@ const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
 
         <div className="total">
           <div>Total</div>
-          <div>{formatPrice(item.price * item.quantity)}</div>
+          <div>{formatPrice(price * quantity)}</div>
         </div>
       </div>
 
