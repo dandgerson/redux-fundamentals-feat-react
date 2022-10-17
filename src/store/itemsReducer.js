@@ -65,7 +65,7 @@ export const updatePrice = ({ uuid, price }) => ({
 });
 
 export const updateQuantity = ({ uuid, quantity }) => ({
-  type: t.UPDATE_PRICE,
+  type: t.UPDATE_QUANTITY,
   payload: { uuid, quantity },
 });
 

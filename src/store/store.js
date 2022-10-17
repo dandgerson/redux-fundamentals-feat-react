@@ -1,8 +1,10 @@
 import { combineReducers, createStore } from "redux";
 import itemsReducer from "./itemsReducer";
+import tipPercentageReducer from "./tipPercentageReducer";
 
 const rootReducer = combineReducers({
   items: itemsReducer,
+  tipPercentage: tipPercentageReducer,
 });
 
 const store = createStore(

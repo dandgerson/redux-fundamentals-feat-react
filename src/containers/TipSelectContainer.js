@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { updateTip } from "../store/tip-percentage/actions";
 import TipSelect from "../components/TipSelect";
+import { updateTip } from "../store/tipPercentageReducer";
 
 const mapStateToProps = (state) => {
   return {

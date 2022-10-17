@@ -28,7 +28,7 @@ body {
   border-radius: 1rem;
   border: 1px solid rgb(172 115 166);
   width: 50%;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .menuItems {
@@ -141,6 +141,38 @@ input {
 
     &:hover {
       background-color: rgba(143, 208, 240, 0.25);
+    }
+  }
+}
+
+.tipSelect {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    select {
+      border-radius: 0.25rem;
+      border: 0;
+      padding: 0.5rem;
+    }
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: right;
+
+  .entry {
+    display: flex;
+    & > div {
+      flex: 1;
+    }
+
+    .title {
+      font-weight: bold;
     }
   }
 }

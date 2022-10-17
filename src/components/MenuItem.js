@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
+import { formatPrice } from "../formatPrice";
 import CurrencyInput from "./CurrencyInput";
 
-const formatPrice = (price) => `$${price.toFixed(2)}`;
-
 const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
-  const [quantity, setQuantity] = useState(item.quantity)
-  const [price, setPrice] = useState(item.price)
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [price, setPrice] = useState(item.price);
 
   useEffect(() => {
     updateQuantity(Number.parseInt(quantity, 10));
-  }, [quantity])
+  }, [quantity]);
 
   useEffect(() => {
     updatePrice(Number.parseInt(price, 10));
-  }, [price])
+  }, [price]);
 
   return (
     <div className="item">
@@ -33,9 +32,7 @@ const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
               type="number"
               id={`quantity${item.uuid}`}
               value={quantity}
-              onChange={(e) =>
-                setQuantity(e.target.value)
-              }
+              onChange={(e) => setQuantity(e.target.value)}
             />
           </label>
         </form>
