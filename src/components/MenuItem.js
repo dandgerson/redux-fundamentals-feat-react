@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { formatPrice } from "../formatPrice";
 import CurrencyInput from "./CurrencyInput";
 
-const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
+const MenuItem = ({ item, removeItem, updatePrice, updateQuantity, total }) => {
   const [quantity, setQuantity] = useState(item.quantity);
   const [price, setPrice] = useState(item.price);
 
@@ -39,7 +39,7 @@ const MenuItem = ({ item, removeItem, updatePrice, updateQuantity }) => {
 
         <div className="total">
           <div>Total</div>
-          <div>{formatPrice(price * quantity)}</div>
+          <div>{formatPrice(total)}</div>
         </div>
       </div>
 
