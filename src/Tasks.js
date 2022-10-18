@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksSlice } from "./store/tasksSlice";
+import Task from "./Task";
 
 const Tasks = () => {
-  const tasksFromStore = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => state.tasks);
   const [taskTitle, setTaskTitle] = useState("");
   const dispatch = useDispatch();
 
@@ -20,7 +21,8 @@ const Tasks = () => {
         <label htmlFor="task-title">Title</label>
         <input
           type="text"
-          is="task-title"
+          id="task-title"
+          className="input"
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
           placeholder="New Task"
@@ -28,10 +30,8 @@ const Tasks = () => {
       </form>
 
       <div className="tasksList">
-        {tasksFromStore.map((task) => (
-          <div key={task.id} className="task">
-            <div className="human_title">{task.title}</div>
-          </div>
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
         ))}
       </div>
     </div>

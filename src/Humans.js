@@ -21,7 +21,8 @@ const Humans = () => {
         <label htmlFor="human-name">Name</label>
         <input
           type="text"
-          is="human-name"
+          id="human-name"
+          className="input"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="New Human"
