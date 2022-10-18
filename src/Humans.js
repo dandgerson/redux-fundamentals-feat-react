@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { humansSlice } from "./store/humansSlice";
 
 const Humans = () => {
   const humans = useSelector((state) => state.humans);
   const [name, setName] = useState("");
-
-  const addHuman = (name) => {
-    setHumans([...humans, { name }]);
-  };
+  const dispatch = useDispatch();
 
   return (
     <div className="humans">
@@ -16,7 +14,8 @@ const Humans = () => {
         onSubmit={(e) => {
           e.preventDefault();
 
-          addHuman(name);
+          dispatch(humansSlice.actions.add({ name }));
+          setName("");
         }}
       >
         <label htmlFor="human-name">Name</label>
@@ -31,7 +30,7 @@ const Humans = () => {
 
       <div className="humansList">
         {humans.map((human) => (
-          <div key={human.name} className="human">
+          <div key={human.id} className="human">
             <div className="human_name">{human.name}</div>
           </div>
         ))}

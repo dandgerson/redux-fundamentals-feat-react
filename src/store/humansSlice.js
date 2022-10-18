@@ -15,5 +15,9 @@ const initialState = [
 export const humansSlice = createSlice({
   name: "humans",
   initialState,
-  add: (state, action) => state.push(createHuman(action.payload.name)),
+  reducers: {
+    add: (state, action) => {
+      state.push(createHuman(action.payload.name));
+    },
+  },
 });
