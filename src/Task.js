@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { tasksSlice, toggleTask } from "./store/tasksSlice";
+import { tasksSlice } from "./store/tasksSlice";
 
-const Task = ({ task }) => {
-  const [assignee, setAssignee] = useState("");
-
-  const humans = useSelector((state) => state.humans);
+const Task = ({ id }) => {
   const dispatch = useDispatch();
+  const humans = useSelector((state) => state.humans);
+  const task = useSelector((state) =>
+    state.tasks.find((task) => task.id === id)
+  );
 
   return (
     <div className="task">
@@ -30,8 +30,15 @@ const Task = ({ task }) => {
           name="assignee"
           id="assignee"
           className="input"
-          value={assignee}
-          onChange={(e) => setAssignee(e.target.value)}
+          value={task.assignee}
+          onChange={(e) =>
+            dispatch(
+              tasksSlice.actions.assignToHuman({
+                taskId: task.id,
+                humanId: e.target.value,
+              })
+            )
+          }
         >
           <option value="">(Unassigned)</option>
           {humans.map((human) => (

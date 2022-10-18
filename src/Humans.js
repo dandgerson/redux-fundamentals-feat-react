@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { humansSlice } from "./store/humansSlice";
+import Task from "./Task";
 
 const Humans = () => {
   const humans = useSelector((state) => state.humans);
@@ -33,6 +34,9 @@ const Humans = () => {
         {humans.map((human) => (
           <div key={human.id} className="human">
             <div className="human_name">{human.name}</div>
+            {human.taskIds.map((id) => (
+              <Task key={id} id={id} />
+            ))}
           </div>
         ))}
       </div>

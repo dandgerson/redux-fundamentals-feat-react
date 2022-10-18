@@ -31,7 +31,7 @@ const Tasks = () => {
 
       <div className="tasksList">
         {tasks.map((task) => (
-          <Task key={task.id} task={task} />
+          <Task key={task.id} id={task.id} />
         ))}
       </div>
     </div>
