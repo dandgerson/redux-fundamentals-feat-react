@@ -1,9 +1,9 @@
-import Counter from "./Counter";
+import StarWars from "./StarWars/StarWars";
 
 const App = () => {
   return (
     <div className="app">
-      <Counter />
+      <StarWars />
     </div>
   );
 };
