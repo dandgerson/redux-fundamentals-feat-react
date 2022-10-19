@@ -23,13 +23,19 @@ export const humansSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(tasksSlice.actions.assignToHuman, (state, action) => {
-      console.log({ state });
       state.forEach((human) => {
         if (human.id === action.payload.humanId) {
           !human.taskIds.includes(action.payload.taskId) &&
             human.taskIds.push(action.payload.taskId);
-        } else {
-          human.taskIds.filter((id) => id !== action.payload.taskId);
+        }
+        if (
+          human.id !== action.payload.humanId &&
+          human.taskIds.includes(action.payload.taskId)
+        ) {
+          console.log("clear tasks");
+          human.taskIds = human.taskIds.filter(
+            (id) => id !== action.payload.taskId
+          );
         }
       });
     });
